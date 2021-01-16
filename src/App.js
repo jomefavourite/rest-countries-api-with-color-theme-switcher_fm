@@ -9,17 +9,15 @@ const App = () => {
   return (
     <ThemeContextProvider>
       <Router>
-        <div>
-          <Header />
-          <Switch>
-            <Route exact path='/'>
-              <Worlds />
-            </Route>
-            <Route path='/country/:name'>
-              <CountryPage />
-            </Route>
-          </Switch>
-        </div>
+        <Header />
+        <Switch>
+          <Route exact path='/'>
+            <Worlds />
+          </Route>
+          <Route path='/country/:name'>
+            <CountryPage />
+          </Route>
+        </Switch>
       </Router>
     </ThemeContextProvider>
   );

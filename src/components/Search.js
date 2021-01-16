@@ -20,6 +20,7 @@ const Search = ({searchTerm, setSearchTerm}) => {
         placeholder='Search for a country...'
         className='w-full outline-none'
         onChange={e => setSearchTerm(e.target.value)}
+        aria-label='Search countries'
       />
     </div>
   );

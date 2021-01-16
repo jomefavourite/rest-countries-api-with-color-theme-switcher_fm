@@ -45,13 +45,27 @@ const Worlds = () => {
   let filteredData;
 
   if (filter.length && countries.data) {
-    filteredData = countries.data.filter((country, i) =>
+    filteredData = countries.data.filter(country =>
       country.region.toLowerCase().includes(filter.toLowerCase())
     );
 
     country = filteredData.map((country, i) => (
       <Country country={country} key={i} />
     ));
+
+    if (countries.data && searchTerm.length >= 1) {
+      searchCountry = filteredData.filter(country => {
+        return country.name.toLowerCase().includes(searchTerm.toLowerCase());
+      });
+
+      country = searchCountry.map((country, i) => (
+        <Country country={country} key={i} />
+      ));
+
+      country = searchCountry.map((country, i) => (
+        <Country country={country} key={i} />
+      ));
+    }
   }
 
   return (
@@ -59,11 +73,7 @@ const Worlds = () => {
       <div className='w-11/12 max-w-7xl mx-auto pt-12'>
         <div className='lg:flex lg:justify-between'>
           <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          <Filter
-            filter={filter}
-            setFilter={setFilter}
-            // filteredCountry={filteredCountry}
-          />
+          <Filter setFilter={setFilter} />
         </div>
         <div className='flex flex-wrap gap-14 justify-center'>{country}</div>
       </div>
